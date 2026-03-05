@@ -27,7 +27,7 @@ Extraction isolates the subject from its surroundings using image segmentation, 
 
 ## Enhancement and Upscaling
 
-Generation models produce better results with higher-resolution reference images. Real catalogs contain everything from low-resolution mobile photos to high-quality studio shots. Upscaling models can recover detail and increase resolution, bridging this gap — but they can also introduce edge artifacts (halos, color bleeding) that get amplified downstream. Reapplying the original segmentation mask after upscaling cleans these artifacts while preserving the enhanced detail.
+Generation models produce better results with higher-resolution reference images. Real catalogs contain everything from low-resolution mobile photos to high-quality studio shots. Upscaling models can recover detail and increase resolution, giving the generation model more visual information to work with and improving output quality.
 
 ---
 
