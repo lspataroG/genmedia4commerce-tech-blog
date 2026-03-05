@@ -44,7 +44,7 @@ For example, in a footwear spinning pipeline, a fine-tuned viewpoint classifier 
 }
 ```
 
-If the input set lacks the necessary cardinal views (front, back, left, right), or if problematic features like velcro closures are detected, the pipeline aborts early — saving expensive generation compute through fail-fast feasibility checks.
+If the input set lacks the necessary cardinal views (front, back, left, right), the pipeline aborts early — saving expensive generation compute through fail-fast feasibility checks.
 
 The key principle: every pixel of background clutter, every compression artifact, every irrelevant object is an opportunity for the model to hallucinate. Clean inputs mean fewer retries, lower costs, and higher yield.
 
