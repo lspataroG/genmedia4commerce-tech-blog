@@ -25,18 +25,7 @@ Input optimization is not a fixed sequence of steps. It's a **toolkit** — a se
 | **Classification** | Identifies properties of the input (viewpoint, category, pose) | When the pipeline needs to route inputs or validate coverage |
 | **Selection** | Chooses the best subset of inputs from available options | When multiple input images are available and quality/coverage varies |
 
-### Composition by Use Case
-
-The key insight is that these techniques are **composed per use case**, not applied uniformly. Different pipelines need different combinations:
-
-| Use Case | Extract | Enhance | Classify | Select |
-|----------|---------|---------|----------|--------|
-| Product Spinning (Generic) | Yes | Yes | No | No |
-| Product Spinning (Footwear) | Yes | Yes | Yes (viewpoint) | Yes (best 4 views) |
-| Virtual Try-On | Yes | Yes | No | No |
-| Background Transformation | Sometimes | Sometimes | No | No |
-
-For generic product spinning, the pipeline extracts the product from its background and upscales it — classification isn't needed because the model doesn't need to know what angle it's looking at. For footwear spinning, classification becomes critical: the pipeline needs to identify each image's viewpoint (right side, front, back, etc.) to verify coverage and select the best images for generation.
+Not every pipeline uses every technique. The toolkit is designed to be composed — pick the techniques that matter for your use case, skip the rest. Classification and selection are only needed when inputs are unlabeled or when the pipeline must choose among multiple candidates. Extraction and enhancement apply broadly but can be skipped when inputs are already clean.
 
 > **Key Principle:** Input optimization is about reducing variance in what the model sees. The cleaner and more consistent the input, the less room the model has to improvise — and improvisation is the primary source of errors.
 
