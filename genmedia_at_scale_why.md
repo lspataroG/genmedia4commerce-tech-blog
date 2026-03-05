@@ -80,7 +80,20 @@ This works for demos. It fails at scale for three reasons:
 
 **3. No error recovery.** Generative models are non-deterministic. The same input might produce a perfect result on one call and a flawed result on the next. Without retry logic informed by quality assessment, there's no mechanism to recover from bad generations.
 
-[DIAGRAM: A comparison showing two pipelines side by side. Left side labeled "Naive Approach": a simple linear flow from "Product Image" through "API Call" to "Output" with a red X and examples of common failures (reversed rotation, wrong face, extra buttons). Right side labeled "Production Approach": a flow from "Product Images" through "Input Optimization" (with sub-steps: extract, enhance, classify, select) to "Guided Generation" to "Automated Evaluation" with a feedback loop arrow from evaluation back to generation labeled "Retry", and a green checkmark on the final "Output". The right side should be visually richer, showing the three pillars as distinct colored blocks.]
+```mermaid
+flowchart LR
+    subgraph Naive["❌ Naive Approach"]
+        direction LR
+        NI["Product Image"] --> API["API Call"] --> NO["Output\n(unpredictable)"]
+    end
+
+    subgraph Production["✅ Production Approach"]
+        direction LR
+        PI["Product Images"] --> IO["Input\nOptimization"] --> GG["Guided\nGeneration"] --> AE["Automated\nEvaluation"]
+        AE -- "🔄 Retry" --> GG
+        AE --> PO["Output\n(quality-assured)"]
+    end
+```
 
 ---
 

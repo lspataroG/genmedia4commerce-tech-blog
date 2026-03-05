@@ -60,7 +60,17 @@ The valid clockwise rotation is defined as a directed graph:
 right → front_right → front → front_left → left → back_left → back → back_right → right
 ```
 
-[DIAGRAM: A circular graph with 8 nodes arranged in an octagon, connected by clockwise arrows. The nodes are labeled (starting from the right, going clockwise): "right", "front_right", "front", "front_left", "left", "back_left", "back", "back_right". Each node has a small shoe silhouette showing the corresponding viewpoint. The arrows go clockwise. Self-loops on each node (a node can stay on itself for consecutive frames). The center of the octagon says "Valid Clockwise Path".]
+```mermaid
+graph LR
+    R["right"] --> FR["front_right"]
+    FR --> F["front"]
+    F --> FL["front_left"]
+    FL --> L["left"]
+    L --> BL["back_left"]
+    BL --> B["back"]
+    B --> BR["back_right"]
+    BR --> R
+```
 
 ### How It Works
 

@@ -61,7 +61,24 @@ The framework employs three categories of evaluation methods, each suited to dif
 
 > **Key Principle: Descriptions serve evaluation, not generation.** This is where rich, detailed product descriptions become valuable. While generation prompts should be minimal to avoid conflicts with reference images, evaluation prompts benefit from exhaustive descriptions. "Check whether the distinctive crosshatch pattern is present on the heel counter" requires knowing about the crosshatch pattern — and that knowledge comes from a detailed product description, not from the generation prompt.
 
-[DIAGRAM: A two-column layout. Left column titled "Generation Prompt" shows a minimal text: "A blue running shoe standing still in a white studio void" with a small icon. Right column titled "Evaluation Prompt" shows a much longer, detailed text (use a text block with visible but unreadable small text to convey density, with a few legible highlighted phrases like "crosshatch pattern on heel counter", "three ventilation holes on medial side", "reflective heel tab with embossed logo"). Below both columns, a generated shoe video frame is shown. An arrow from the left column points to the video frame labeled "Creates". An arrow from the right column points to the video frame labeled "Judges". The visual contrast in text density between the two columns should be dramatic.]
+```mermaid
+flowchart TD
+    Product["Product Image"]
+
+    Product --> Gen
+    Product --> Eval
+
+    subgraph Gen["Generation Prompt (minimal)"]
+        GP["'A blue running shoe'"]
+    end
+
+    subgraph Eval["Evaluation Prompt (detailed)"]
+        EP["'blue mesh upper, white midsole,\nreflective heel tab, crosshatch pattern,\nthree ventilation holes, black rubber\noutsole with hexagonal grip...'"]
+    end
+
+    Gen -- "Creates" --> Output["Generated Output"]
+    Eval -- "Judges" --> Output
+```
 
 ---
 
@@ -97,7 +114,31 @@ Rather than discarding a partially-correct result and regenerating entirely, the
 
 These strategies are not mutually exclusive — they can be composed. For example, a pipeline might generate N variations in parallel (Strategy 2), apply a targeted correction pass to each variation (Strategy 3), and then score-and-rank the results. Or a pass/fail retry loop (Strategy 1) might include a self-correction step before deciding to discard and regenerate from scratch. The right combination depends on the use case, the cost profile, and which quality dimensions are most likely to fail.
 
-[DIAGRAM: Three horizontal lanes showing the three evaluation strategies. Lane 1 "Pass/Fail with Retry": a linear flow of Generate → Evaluate → diamond decision (Pass/Fail) → Fail loops back to Generate (labeled "retry 1, 2, ... N"), Pass goes to Accept. Lane 2 "Score-and-Rank": three parallel Generate→Evaluate flows producing scores, converging into a "Rank & Select" step that outputs the best. Lane 3 "Multi-Step Self-Correction": Generate → Evaluate → "Targeted Correction" → Re-Evaluate → diamond "Compare Scores" → Pick Better. Each lane should be color-coded differently.]
+```mermaid
+flowchart LR
+    subgraph S1["Strategy 1: Pass/Fail with Retry"]
+        direction LR
+        G1["Generate"] --> E1["Evaluate"] --> D1{"Pass?"}
+        D1 -- "Yes" --> A1["Accept"]
+        D1 -- "No" --> G1
+    end
+
+    subgraph S2["Strategy 2: Score-and-Rank"]
+        direction LR
+        G2a["Generate"] --> E2a["Evaluate\n(score: 80)"]
+        G2b["Generate"] --> E2b["Evaluate\n(score: 65)"]
+        G2c["Generate"] --> E2c["Evaluate\n(score: 92)"]
+        E2a --> Rank["Rank &\nSelect"]
+        E2b --> Rank
+        E2c --> Rank
+        Rank --> Best["Best"]
+    end
+
+    subgraph S3["Strategy 3: Multi-Step Self-Correction"]
+        direction LR
+        G3["Generate"] --> E3["Evaluate"] --> Fix["Targeted\nCorrection"] --> E3b["Re-Evaluate"] --> Pick["Pick\nBetter"]
+    end
+```
 
 ---
 

@@ -8,7 +8,24 @@
 
 Every production-grade generative media pipeline is built on the same three-pillar framework. The pillars are sequential: optimize inputs, guide generation, evaluate outputs. But the system is a loop, not a line: failed evaluations trigger retries with the same optimized inputs, and in some cases evaluation results inform the next generation attempt.
 
-[DIAGRAM: A horizontal flow diagram showing three large blocks labeled "Input Optimization", "Guided Generation", and "Automated Evaluation", connected by forward arrows. From "Automated Evaluation", two paths exit: one arrow pointing right to "Accept" (green), and one arrow looping back to "Guided Generation" labeled "Retry" (orange). Inside each block, show 2-3 representative sub-steps as smaller boxes. Input Optimization contains "Extract", "Enhance", "Classify", "Select". Guided Generation contains "Reference Images", "Minimal Prompt", "Model Call". Automated Evaluation contains "Quality Check", "Score", "Accept/Reject". A dotted line from Evaluation back to Input Optimization is labeled "Self-Correction" for advanced flows.]
+```mermaid
+flowchart LR
+    subgraph IO["Input Optimization"]
+        Extract --> Enhance --> Classify --> Select
+    end
+    subgraph GG["Guided Generation"]
+        RefImages["Reference Images"] --> ModelCall["Model Call"]
+        Prompt["Minimal Prompt"] --> ModelCall
+    end
+    subgraph AE["Automated Evaluation"]
+        QualityCheck["Quality Check"] --> Score --> Decision["Accept / Reject"]
+    end
+
+    IO --> GG --> AE
+    AE -- "✅ Accept" --> Output["Production Asset"]
+    AE -- "🔄 Retry" --> GG
+    AE -. "Self-Correction" .-> IO
+```
 
 ---
 
@@ -49,7 +66,21 @@ This is perhaps the most counterintuitive insight in the framework:
 
 This asymmetry is deliberate. Generation models work best when visually guided. Evaluation models work best when given explicit criteria to check against.
 
-[DIAGRAM: A split diagram showing the same product image (a shoe) at the top, with two branches below. Left branch labeled "For Generation" shows a small text bubble: "A blue running shoe" pointing to a generation model icon, then to a generated video frame. Right branch labeled "For Evaluation" shows a large detailed text block listing "blue mesh upper, white midsole, reflective heel tab, crosshatch pattern on heel counter, three ventilation holes on medial side, black rubber outsole with hexagonal grip pattern" pointing to an evaluation model icon comparing the generated output against the reference. The visual contrast between the minimal generation prompt and the detailed evaluation description should be stark.]
+```mermaid
+flowchart TD
+    Product["🖼️ Product Image"]
+
+    Product --> GenBranch
+    Product --> EvalBranch
+
+    subgraph GenBranch["For Generation"]
+        GenPrompt["'A blue running shoe'"] --> GenModel["Generation Model"] --> GenOutput["Generated Output"]
+    end
+
+    subgraph EvalBranch["For Evaluation"]
+        EvalPrompt["'blue mesh upper, white midsole,\nreflective heel tab, crosshatch pattern\non heel counter, three ventilation holes\non medial side, black rubber outsole\nwith hexagonal grip pattern'"] --> EvalModel["Evaluation Model"] --> EvalResult["Quality Assessment"]
+    end
+```
 
 ---
 
@@ -95,7 +126,36 @@ This pattern is more effective than retrying from scratch, because it builds on 
 
 The three pillars compose into a general-purpose framework that can be instantiated for any generative media use case:
 
-[DIAGRAM: A detailed architecture diagram showing the full pipeline. Top row: "Product Catalog" (database icon) feeds into "Input Optimization" box containing four connected steps: "Extract" (scissors icon) → "Enhance" (upscale arrow icon) → "Classify" (tag icon) → "Select" (checkmark icon), with dotted borders around Classify and Select indicating they're optional. Middle row: "Guided Generation" box containing "Reference Images" + "Minimal Prompt" feeding into "Model Call" (generic model icon). Bottom row: "Automated Evaluation" box containing three parallel tracks: "Deep Learning Models" (gear icon), "LLM-as-Judge" (brain icon), "Ground Truth Comparison" (side-by-side icon), all feeding into a "Composite Score" diamond. From the diamond, two arrows: green arrow right to "Production Asset" (checkmark), orange arrow looping back up to "Guided Generation" labeled "Retry (budget: N)". The whole diagram should flow top-to-bottom with clear separation between the three pillar zones.]
+```mermaid
+flowchart TD
+    Catalog["Product Catalog"] --> Extract
+
+    subgraph IO["Pillar 1: Input Optimization"]
+        Extract["Extract"] --> Enhance["Enhance"]
+        Enhance --> Classify["Classify"]:::optional
+        Classify --> Select["Select"]:::optional
+    end
+
+    subgraph GG["Pillar 2: Guided Generation"]
+        RefImg["Reference Images"] --> Model["Model Call"]
+        MinPrompt["Minimal Prompt"] --> Model
+    end
+
+    subgraph AE["Pillar 3: Automated Evaluation"]
+        DL["Deep Learning Models"]
+        LLM["LLM-as-Judge"]
+        GT["Ground Truth Comparison"]
+        DL --> Composite["Composite Score"]
+        LLM --> Composite
+        GT --> Composite
+    end
+
+    IO --> GG --> AE
+    Composite -- "✅ Accept" --> Asset["Production Asset"]
+    Composite -- "🔄 Retry (budget: N)" --> GG
+
+    classDef optional stroke-dasharray: 5 5
+```
 
 What changes across use cases is the specific composition of techniques within each pillar — which is exactly what the case studies in Parts 5 and 6 demonstrate.
 
