@@ -57,7 +57,7 @@ At catalog scale, the pipeline must be autonomous. A retailer processing 10,000 
 
 - **Automatic quality assessment:** Every generated asset must be evaluated without human intervention. This means building evaluation systems that can detect the fidelity and consistency problems described above.
 - **Graceful failure handling:** When a generation fails quality checks, the system must decide whether to retry (and how many times), fall back to a different approach, or exclude the product. These decisions have cost implications — each retry burns API credits and processing time.
-- **Predictable cost envelopes:** Unlimited retries produce perfect quality but unpredictable costs. The architecture must balance quality targets against budget constraints.
+- **Bounded retry budgets:** More retries don't guarantee convergence — some inputs simply won't produce acceptable output regardless of how many times you regenerate. The architecture must cap retries, detect when a product won't converge, and decide whether to skip it or accept the best available result.
 
 ---
 
