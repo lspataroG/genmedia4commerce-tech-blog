@@ -6,7 +6,7 @@ pdf_options:
 stylesheet: style.css
 ---
 
-# GenMedia at Scale: Production-Grade Generative Media for Commerce
+# Beyond the Prompt: A Framework for Scaling GenMedia in Commerce
 
 ## TL;DR
 
@@ -231,7 +231,7 @@ This asymmetry is deliberate. Generation models work best when visually guided. 
 
 Evaluation is the pillar that makes the framework production-grade. Without it, every output is a gamble. With it, the pipeline can achieve quality levels that approach or exceed human review.
 
-The evaluation system is covered in depth in **[Part 4: Deep Dive on Evaluation](#part-4-deep-dive--evaluation)**. Here, we outline the architectural role it plays.
+The evaluation system is covered in depth in **[Part 3: Deep Dive on Evaluation](#part-3-deep-dive--evaluation)**. Here, we outline the architectural role it plays.
 
 ### The Generate-Evaluate Loop
 
