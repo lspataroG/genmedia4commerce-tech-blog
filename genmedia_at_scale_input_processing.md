@@ -18,11 +18,6 @@ Product images from real catalogs rarely arrive as clean, isolated subjects. The
 
 Extraction isolates the subject from its surroundings using image segmentation, then places it on a controlled, uniform background. The segmentation produces a pixel-level mask of the product, which is applied to crop and composite the subject onto a clean canvas.
 
-**Key considerations:**
-
-- **Edge preservation.** Raw segmentation masks tend to clip fine details — zippers, stitching, thin straps, hair. Dilating the mask by a small margin prevents this, at the cost of retaining a sliver of original background.
-- **Resolution handling.** Segmentation models have input resolution limits. For high-resolution images, the approach is to resize for segmentation, then scale the resulting mask back to original dimensions — preserving full-resolution detail.
-
 ---
 
 ## Enhancement and Upscaling
