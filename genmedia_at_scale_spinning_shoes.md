@@ -6,7 +6,7 @@
 
 ## Why Shoes Are Harder
 
-Footwear is the most challenging product category for AI-generated spinning videos. Where a generic product (a mug, a backpack) has few well-defined viewpoints, a shoe has a highly structured geometry with **distinct, named views** — right side, left side, front, back, sole, top — that customers know and expect to see.
+Footwear is one of the most challenging product categories for AI-generated spinning videos. Where a generic product (a mug, a backpack) has few well-defined viewpoints, a shoe has a highly structured geometry with **distinct, named views** — right side, left side, front, back, sole, top — that customers know and expect to see.
 
 This creates problems that don't exist for generic products:
 
