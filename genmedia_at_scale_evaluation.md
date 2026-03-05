@@ -51,7 +51,7 @@ The framework employs three categories of evaluation methods, each suited to dif
 |--------|------------------|--------|
 | Visual artifact detection | Glitches, discontinuities, unnatural transformations in generated media | `{is_valid: bool, explanation: str}` |
 | Product accuracy scoring | Whether reference product details are faithfully reproduced | Score on a defined scale (e.g., 0–100) |
-| Product consistency | Whether the generated output matches the reference across multiple views | `{is_valid: bool, explanation: str}` |
+| Product consistency | Whether a generated video maintains consistent product appearance across frames and matches the reference | `{is_valid: bool, explanation: str}` |
 
 **Visual artifact detection** sends generated media to Gemini and asks it to identify specific categories of problems: discontinuities, features appearing or disappearing, unnatural transformations. The prompt must be carefully calibrated to distinguish between actual defects and acceptable imperfections (minor wobbles, slight lighting variations, natural reflections).
 
