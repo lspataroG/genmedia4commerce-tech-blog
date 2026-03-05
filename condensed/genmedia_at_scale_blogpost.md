@@ -1,4 +1,4 @@
-# GenMedia at Scale: A Framework for Production-Grade Generative Media
+# Beyond the Prompt: A Framework for Scaling GenMedia in Commerce
 
 Generative AI models can produce stunning product media — 360-degree spins, virtual try-on images, lifestyle scenes. But the gap between a single impressive demo and reliable production across thousands of SKUs is vast. This post describes a framework for bridging that gap.
 
