@@ -29,7 +29,7 @@ The architecture employs three categories of evaluation methods, each suited to 
 
 **When to use:** When the quality dimension can be quantified numerically — face identity preservation, rotation direction, structural similarity.
 
-**Examples in production:**
+**Applicable methods:**
 
 | Method | Model | What It Measures | Output |
 |--------|-------|------------------|--------|
@@ -49,7 +49,7 @@ The architecture employs three categories of evaluation methods, each suited to 
 
 **When to use:** When the quality dimension requires semantic understanding — detecting visual glitches that break physical plausibility, assessing whether a garment is accurately reproduced, identifying hallucinated features.
 
-**Examples in production:**
+**Applicable methods:**
 
 | Method | Model | What It Measures | Output |
 |--------|-------|------------------|--------|
@@ -71,7 +71,7 @@ The architecture employs three categories of evaluation methods, each suited to 
 
 **When to use:** When the question is "does the output match the input?" rather than "is the output good?"
 
-**Examples in production:**
+**Applicable methods:**
 
 | Method | Approach | What It Measures |
 |--------|----------|------------------|
