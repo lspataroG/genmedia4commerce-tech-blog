@@ -16,8 +16,6 @@ This creates problems that don't exist for generic products:
 
 **3. Rotation verifiability.** Because shoes have named viewpoints, the pipeline can do something impossible with generic products: verify that the generated video actually passes through the correct sequence of views. A clockwise rotation should show: right → front → left → back → right. This enables **semantic spin validation** — a much stronger quality check than motion tracking alone.
 
-**4. Category-specific failure modes.** Some shoe types produce consistently poor spinning results. Shoes with velcro/hook-and-loop closures generate artifacts because the straps move unpredictably during the AI-generated rotation. The pipeline must detect and filter these before wasting generation budget.
-
 ---
 
 ## How the Framework Applies
@@ -28,13 +26,11 @@ The footwear pipeline demonstrates the full power of the three-pillar framework.
 
 Unlike generic products, footwear requires **deep classification** before any processing begins.
 
-**Viewpoint classification.** Every input image is classified by a fine-tuned model into one of 12 categories — right, left, front, back, and compound views (front_right, back_left, etc.), plus special categories for sole views, multi-shoe images, and invalid inputs (person wearing the shoes, non-neutral background, etc.).
+**Viewpoint classification.** Catalog images arrive unlabeled and vary widely — you might get clean side views, but also intermediate angles (front_right, back_left), cropped close-ups, zoomed-in details, images of someone wearing the shoes, or sole views. Every input image is classified by a fine-tuned model into categories covering cardinal views (right, left, front, back), compound views (front_right, back_left, etc.), and special categories (sole, multiple shoes, invalid). Invalid images — cropped, zoomed, worn by a person, showing the sole — are discarded before any expensive processing.
 
 **Pair splitting.** Images containing two shoes are automatically detected through classification and split into individual shoe images using segmentation. The resulting images are re-classified to determine their viewpoints.
 
-**Feasibility check.** After classification, the pipeline verifies that the input set covers all four cardinal views (front, back, left, right). If coverage is insufficient, the product is excluded before any expensive processing occurs — a direct application of the fail-fast principle.
-
-**Failure mode detection.** A dedicated check identifies shoes with velcro closures, which are known to produce poor spinning results. This uses Gemini to analyze the images and abort early if velcro is detected. A cheap classification call prevents an expensive failed generation.
+**Feasibility check.** After classification, the pipeline verifies that the input set covers all four cardinal views (front, back, left, right) — compound views count toward their components (e.g., front_right covers both front and right). If coverage is insufficient, the product is excluded before any expensive processing occurs — a direct application of the fail-fast principle.
 
 **Selection and ordering.** From the classified images, the pipeline selects the best images and orders them to match the clockwise rotation path. When multiple images cover the same viewpoint, the most complete one is selected. This gives the generation model the strongest possible visual references in the right sequence.
 
@@ -128,7 +124,6 @@ The final output includes both the video and a set of sampled frames suitable fo
 | **Classification** | Pretrained model (Gemini) | Fine-tuned viewpoint classifier |
 | **Pair handling** | Not needed | Automatic detection and splitting |
 | **Feasibility check** | Basic | 4-view coverage required |
-| **Failure mode filtering** | None | Velcro detection and abort |
 | **Image selection** | Basic selection | Best views in clockwise order |
 | **Spin validation** | Motion tracking (deterministic) | Frame-by-frame classification (semantic) |
 | **Product consistency** | Artifact detection (Gemini) | Multi-view ground truth comparison (Gemini) |
@@ -142,7 +137,7 @@ The footwear pipeline demonstrates how the framework scales to complex use cases
 
 1. **Classification as routing** — viewpoint classification drives every downstream decision
 2. **Fail-fast with feasibility checks** — insufficient inputs are caught before expensive processing
-3. **Failure mode detection** — known bad inputs (velcro) are filtered with cheap classification
+3. **Invalid input filtering** — unusable images (cropped, worn, sole views) are discarded before expensive processing
 4. **Semantic evaluation** — domain knowledge (the rotation graph) enables stronger validation than generic approaches
 5. **Multi-view ground truth comparison** — reference-matched evaluation catches hallucinations
 6. **Layered evaluation** — each layer catches a different class of problem, and together they enable fully automated output
