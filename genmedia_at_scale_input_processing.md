@@ -28,20 +28,13 @@ Generation models produce better results with higher-resolution reference images
 
 ## Classification as Routing
 
-Not all inputs are equal, and not all inputs should be processed the same way. An image showing a product from the side serves a different purpose than one showing it from below. An image containing multiple products needs to be split. An image of a person wearing the product (not the product itself) might need to be discarded entirely — or processed differently.
+Not all inputs are equal, and not all inputs should be processed the same way. Real catalog images arrive unlabeled — you don't know the viewpoint, the product category, whether the image is cropped, whether it shows the product in isolation or in context, or whether it's even usable for the target pipeline.
 
-Classification uses a vision model to categorize each input image, then **routes it** through the appropriate processing path. The key insight is that classification is not labeling for its own sake — it's a routing decision that determines what happens next:
+Classification uses a vision model to categorize each input image, then **routes it** through the appropriate processing path. The key insight is that classification is not labeling for its own sake — it's a **routing decision** that determines what happens next: proceed to generation, split and re-process, discard, or abort early for known failure modes.
 
-| Classification Result | Pipeline Action |
-|----------------------|-----------------|
-| Valid, usable input | Proceed to extraction and generation |
-| Multiple objects in frame | Route to splitting, then re-classify individual results |
-| Unusable input | Discard before expensive processing |
-| Known failure mode | Abort early (save compute on inputs that won't produce acceptable output) |
+**Classification happens early and cheap.** A lightweight vision model call makes fast routing decisions before expensive steps like upscaling and generation. Filtering out unusable images early is one of the most impactful cost optimizations in the pipeline.
 
-**Classification happens early and cheap.** A lightweight vision model call makes fast routing decisions before expensive steps like upscaling and generation. This is a deliberate cost optimization: filtering out unusable images before spending resources on them.
-
-**Feasibility checks.** After classifying all inputs, the pipeline can verify whether the available images are sufficient for the target output. If critical viewpoints or angles are missing, the pipeline can abort early rather than producing a generation that's missing key perspectives. This fail-fast behavior saves compute and produces more predictable results.
+**Feasibility checks.** After classifying all inputs, the pipeline can verify whether the available images are sufficient for the target output. If critical inputs are missing, the pipeline can abort early rather than producing a generation that's incomplete. This fail-fast behavior saves compute and produces more predictable results.
 
 ---
 
