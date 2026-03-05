@@ -67,9 +67,7 @@ The key architectural pattern in this pipeline is layered evaluation: a cheap de
 
 ### Level 1: Rotation Direction (Deterministic)
 
-The first check uses **optical flow analysis** to determine whether the video shows the expected rotation direction. This is a pure computer vision approach — no API calls, no cost, sub-second execution.
-
-The approach tracks feature points across consecutive frames, computes horizontal displacement patterns, and classifies the overall motion into clockwise, anticlockwise, or invalid (erratic motion, direction changes, spikes). A rule-based classifier evaluates the displacement pattern against calibrated thresholds.
+The first check uses **motion tracking** to determine whether the video shows the expected rotation direction. It tracks visual features across consecutive frames, measures how they move horizontally, and classifies the overall motion as clockwise, anticlockwise, or invalid. This is a pure computer vision approach — no API calls, no cost, sub-second execution.
 
 > **Why not use an LLM for this?** Rotation direction is an objective, measurable property. A deterministic algorithm is faster, cheaper, and more reproducible than a vision-language model for this task. LLMs should be reserved for semantic judgments that require understanding, not for measurements that can be computed directly.
 
