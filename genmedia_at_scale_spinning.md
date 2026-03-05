@@ -38,6 +38,23 @@ The model receives:
 
 The text prompt describes the *scene and motion*, never the product details. Product details come from the images. This minimizes the chance of text-image conflicts that lead to artifacts.
 
+**Example Veo prompt:**
+
+```
+[Subject]: A red ceramic mug standing still in a completely white studio void
+(Hex: #FFFFFF, RGB: 255, 255, 255).
+
+[Action]: The camera performs one continuous, seamless, very fast 360-degree orbit
+around the stationary product. The camera movement is perfectly smooth and steady,
+maintaining a constant distance and speed throughout the entire clip. The product
+does not move or rotate; only the camera moves.
+
+[Scene]: A completely white studio void (Hex: #FFFFFF, RGB: 255, 255, 255).
+The only visible element is the product, nothing else.
+```
+
+Notice how the prompt says nothing about the mug's handle, glaze, or any detail — it only describes the type, the camera motion, and the environment. The reference images carry everything else.
+
 ### Pillar 3: Automated Evaluation
 
 Every generated video passes through a **two-level validation** that applies the cost-aware sequencing principle from the evaluation framework.
