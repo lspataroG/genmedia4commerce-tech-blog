@@ -45,7 +45,7 @@ The architecture employs three categories of evaluation methods, each suited to 
 
 ### 2. LLM-as-Judge with Gemini
 
-**What:** Large vision-language models (Gemini) that analyze generated media and produce structured quality assessments.
+**What:** Large vision-language models that analyze generated media and produce structured quality assessments.
 
 **When to use:** When the quality dimension requires semantic understanding — detecting visual glitches that break physical plausibility, assessing whether a garment is accurately reproduced, identifying hallucinated features.
 
