@@ -104,17 +104,9 @@ flowchart TD
 
 ---
 
-## Key Patterns Demonstrated
+## Conclusion
 
-This case study illustrates several framework patterns in practice:
-
-| Pattern | How It's Applied |
-|---------|-----------------|
-| **Reference images lead** | Product details come from images; text prompt only describes scene and motion |
-| **Minimal descriptions for generation** | Subject description is just type + color, generated deterministically by Gemini |
-| **Cost-aware evaluation sequencing** | Free optical flow check before paid Gemini evaluation |
-| **Pass/fail with retry** | Binary quality gate with bounded retry budget |
-| **Deterministic before semantic** | Objective measurement (rotation) before subjective judgment (artifact detection) |
+The generic spinning pipeline demonstrates the framework at its simplest: clean the inputs, keep the prompt minimal, and let layered evaluation — cheap deterministic checks first, semantic judgment second — turn a non-deterministic generation model into a reliable production system. When a product category demands deeper control, the same architecture extends naturally — as the footwear case study shows next.
 
 ---
 
