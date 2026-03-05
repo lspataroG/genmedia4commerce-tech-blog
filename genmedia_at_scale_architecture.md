@@ -25,19 +25,7 @@ Input optimization is not a fixed sequence of steps. It's a **toolkit** — a se
 | **Classification** | Identifies properties of the input (viewpoint, category, pose) | When the pipeline needs to route inputs or validate coverage |
 | **Selection** | Chooses the best subset of inputs from available options | When multiple input images are available and quality/coverage varies |
 
-Not every pipeline uses every technique. The toolkit is designed to be composed — pick the techniques that matter for your use case, skip the rest. Classification and selection are only needed when inputs are unlabeled or when the pipeline must choose among multiple candidates. Extraction and enhancement apply broadly but can be skipped when inputs are already clean.
-
 > **Key Principle:** Input optimization is about reducing variance in what the model sees. The cleaner and more consistent the input, the less room the model has to improvise — and improvisation is the primary source of errors.
-
-### Fallback Strategies
-
-In production, individual optimization steps can fail. The architecture handles this with cascading fallbacks:
-
-- **Segmentation:** If the primary segmentation model fails (API timeout, unsupported input), fall back to a local ML model
-- **Upscaling:** If the target upscale factor would exceed output limits, automatically reduce the factor (4x to 3x to 2x)
-- **Classification:** If classification is ambiguous, apply conservative routing (e.g., treat an uncertain classification as "needs splitting" rather than risking incorrect downstream processing)
-
-The goal is never to abort the pipeline due to a preprocessing failure. Degrade gracefully, continue with the best available input, and let the evaluation stage catch any quality issues downstream.
 
 ---
 
