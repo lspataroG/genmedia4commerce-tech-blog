@@ -101,25 +101,23 @@ These strategies are not mutually exclusive — they can be composed. For exampl
 
 ---
 
-## Composite Scoring and Discard Gates
+## Acceptance Thresholds and Composite Scoring
 
-When multiple evaluation dimensions are assessed, they must be combined into a single actionable decision. The framework uses **weighted composite scoring** with **hard discard gates**.
+When multiple evaluation dimensions are assessed, they must be combined into a single actionable decision. The framework applies **acceptance thresholds** first, then **weighted composite scoring** on the survivors.
+
+### Acceptance Thresholds
+
+Before computing any composite score, each evaluation dimension is checked against a hard floor. If any single dimension falls below its acceptance threshold, the output is discarded immediately — regardless of how well it scores on other dimensions. This prevents critically flawed outputs from being masked by high scores elsewhere.
 
 ### Weighted Combination
 
-Multiple evaluation scores are combined with configurable weights that reflect business priorities:
+Outputs that pass all acceptance thresholds are then scored. Multiple evaluation scores are combined with configurable weights that reflect business priorities:
 
 ```
 final_score = dimension_1_score * weight_1 + dimension_2_score * weight_2 + ...
 ```
 
 The weights encode what matters most for the specific use case. Adjusting weights shifts the quality tradeoff without changing the evaluation methods themselves.
-
-### Hard Discard Gates
-
-Composite scores can mask critical failures. A high score on one dimension combined with a catastrophic failure on another might produce an "acceptable" composite — but the output is unusable.
-
-**Discard gates** are hard floors that override the composite score. If any single evaluation dimension falls below its gate threshold, the output is discarded regardless of how well it scores on other dimensions. This ensures that critically flawed outputs are never accepted.
 
 ---
 
