@@ -16,9 +16,9 @@ At scale, raw model outputs require human review to catch failures — and when 
 
 ---
 
-## Solution Overview
+## Technical Patterns
 
-The solution is built on three architectural pillars that apply across all generative media use cases:
+The architecture is built on three pillars that apply across all generative media use cases:
 
 ### 1. Input Optimization
 > **[Part 2: The Architecture Philosophy](genmedia_at_scale_architecture.md)** | **[Part 3: Deep Dive on Input Processing](genmedia_at_scale_input_processing.md)**
