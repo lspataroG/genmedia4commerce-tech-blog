@@ -27,13 +27,7 @@ Extraction isolates the subject from its surroundings using image segmentation, 
 
 ## Enhancement and Upscaling
 
-Generation models produce better results with higher-resolution reference images. A 200x300px product photo gives the model far less visual information than a 2000x3000px studio shot. But real catalogs contain both.
-
-Upscaling models can recover detail and increase resolution, but they introduce a subtle problem: **edge artifacts.** Around the boundaries where the segmented subject meets the background, upscaling can create halos, color bleeding, or softened edges. These artifacts then get amplified by the generation model.
-
-The solution is a two-phase approach: **upscale broadly, then clean precisely.** After upscaling, the original segmentation mask is scaled to match the new dimensions and reapplied — removing any artifacts the upscaler introduced around edges while preserving the enhanced detail everywhere else.
-
-[DIAGRAM: A horizontal flow showing three stages of a shoe image. Stage 1 "Original": a small, slightly blurry shoe on a grey gradient background (labeled "low resolution"). Stage 2 "Extracted + Upscaled": a larger, sharp shoe on white background with a red circle highlighting a subtle halo artifact around the shoe's edge (labeled "upscaled, note edge artifact"). Stage 3 "Cleaned": the same large shoe but with the red circle area now showing a clean edge against white (labeled "upscaled, clean edges"). Arrows connect the stages, labeled "Extract + Upscale" and "Reapply Mask".]
+Generation models produce better results with higher-resolution reference images. Real catalogs contain everything from low-resolution mobile photos to high-quality studio shots. Upscaling models can recover detail and increase resolution, bridging this gap — but they can also introduce edge artifacts (halos, color bleeding) that get amplified downstream. Reapplying the original segmentation mask after upscaling cleans these artifacts while preserving the enhanced detail.
 
 ---
 
