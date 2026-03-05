@@ -90,7 +90,7 @@ Shoes with velcro produce consistently poor spinning results because the straps 
 
 **Implementation:**
 - Up to 4 images are selected from relevant viewpoints (front-facing and side views where velcro is visible)
-- All selected images are sent to Gemini 2.5 Flash Lite in a single call
+- All selected images are sent to Gemini in a single call
 - The model checks for velcro straps, hook-and-loop closures, and fuzzy fastener strips
 - Side-release buckles and pin-buckle fastenings are explicitly excluded (these work fine in spinning videos)
 - Response: `{has_velcro: bool, explanation: str}`
@@ -180,7 +180,7 @@ Rather than checking individual frames against individual references, the pipeli
 
 1. **Label matching:** Generated frames are mapped to reference images by their classified viewpoint
 2. **SSIM frame selection:** For each reference, the generated frame with the highest structural similarity is selected, along with neighboring frames (±4 positions) for context
-3. **Single Gemini evaluation:** All references and selected frames are sent to Gemini 3 Flash in a single API call
+3. **Single Gemini evaluation:** All references and selected frames are sent to Gemini in a single API call
 
 ### Evaluation Criteria
 

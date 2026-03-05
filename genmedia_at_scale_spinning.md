@@ -32,7 +32,7 @@ The text prompt never describes product details. It describes the *scene and mot
 
 ## Pipeline Walkthrough
 
-[DIAGRAM: A vertical flow diagram showing the complete generic spinning pipeline. Each step is a rounded rectangle with the step name and a small icon. Flow goes top to bottom: "Input Images (1-4)" → "Extract & Upscale" (parallel tracks for each image, converging) → "Canvas Creation" → "Generate Description (Gemini)" → "Generate Video (Veo 3.1)" → diamond "Rotation Check (Optical Flow)" with Pass/Fail paths → diamond "Glitch Check (Gemini)" with Pass/Fail paths → "Accept Video". Both Fail paths loop back to "Generate Video" with a retry counter showing "max 4 attempts". On the right side, annotate each step with the technology used: "Vertex AI Segmentation + Imagen 4 Upscale", "4K white canvas", "Gemini 2.5 Flash (temp=0)", "Veo 3.1 (8s, 16:9)", "Lucas-Kanade optical flow", "Gemini 3 Flash (2fps sampling)".]
+[DIAGRAM: A vertical flow diagram showing the complete generic spinning pipeline. Each step is a rounded rectangle with the step name and a small icon. Flow goes top to bottom: "Input Images (1-4)" → "Extract & Upscale" (parallel tracks for each image, converging) → "Canvas Creation" → "Generate Description (Gemini)" → "Generate Video (Veo 3.1)" → diamond "Rotation Check (Optical Flow)" with Pass/Fail paths → diamond "Glitch Check (Gemini)" with Pass/Fail paths → "Accept Video". Both Fail paths loop back to "Generate Video" with a retry counter showing "max 4 attempts". On the right side, annotate each step with the technology used: "Vertex AI Segmentation + Imagen 4 Upscale", "4K white canvas", "Gemini (temp=0)", "Veo 3.1 (8s, 16:9)", "Lucas-Kanade optical flow", "Gemini (2fps sampling)".]
 
 ### Step 1: Input Preprocessing
 
@@ -57,7 +57,7 @@ This produces a maximum of 3 reference canvases — the practical limit for Veo 
 
 ### Step 2: Description Generation
 
-A vision model (Gemini 2.5 Flash) analyzes the original input images and generates a short product description.
+A vision model (Gemini) analyzes the original input images and generates a short product description.
 
 **Configuration:**
 - Temperature: 0 (deterministic — same images always produce the same description)
@@ -132,7 +132,7 @@ The classifier's thresholds were tuned via grid search on 876 labeled video exam
 
 ## Validation: Level 2 — Glitch Detection
 
-Videos that pass the rotation check proceed to **semantic glitch detection** using Gemini 3 Flash as a vision evaluator.
+Videos that pass the rotation check proceed to **semantic glitch detection** using Gemini as a vision evaluator.
 
 ### What It Detects
 
@@ -175,10 +175,10 @@ The two-level validation approach — cheap deterministic check followed by expe
 |------|-----------|------|---------|
 | Background removal | Vertex AI Segmentation (+ rembg fallback) | Low | ~2s per image |
 | Upscaling | Imagen 4.0 | Medium | ~5s per image |
-| Description generation | Gemini 2.5 Flash | Low | ~1s |
+| Description generation | Gemini | Low | ~1s |
 | Video generation | Veo 3.1 | High | ~60–90s |
 | Rotation check | Optical flow (local) | Free | <1s |
-| Glitch detection | Gemini 3 Flash | Low | ~5s |
+| Glitch detection | Gemini | Low | ~5s |
 
 **Typical pipeline time:** 90–120 seconds for a single successful generation. With retries, up to ~5 minutes worst case.
 

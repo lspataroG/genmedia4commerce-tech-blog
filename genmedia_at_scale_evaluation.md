@@ -53,9 +53,9 @@ The architecture employs three categories of evaluation methods, each suited to 
 
 | Method | Model | What It Measures | Output |
 |--------|-------|------------------|--------|
-| Glitch detection | Gemini 3 Flash | Visual artifacts in spinning videos (direction reversals, teleportation, unnatural transformations) | `{is_valid: bool, explanation: str}` |
-| Garment accuracy | Gemini 3 Flash | Whether each reference garment is faithfully reproduced in a try-on image | Score 0–3 per garment |
-| Product consistency | Gemini 3 Flash | Whether a generated video matches the reference product across multiple viewpoints | `{is_valid: bool, explanation: str}` |
+| Glitch detection | Gemini | Visual artifacts in spinning videos (direction reversals, teleportation, unnatural transformations) | `{is_valid: bool, explanation: str}` |
+| Garment accuracy | Gemini | Whether each reference garment is faithfully reproduced in a try-on image | Score 0–3 per garment |
+| Product consistency | Gemini | Whether a generated video matches the reference product across multiple viewpoints | `{is_valid: bool, explanation: str}` |
 
 **Glitch detection** sends a video to Gemini at reduced frame rate (2fps) and asks it to identify specific categories of visual problems: sustained direction reversals, text/logo mirroring, features appearing or disappearing, sudden jumps or teleportation. The prompt is carefully calibrated to distinguish between actual glitches and acceptable artifacts (minor wobbles, slight lighting variations, natural reflections).
 

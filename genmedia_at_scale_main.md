@@ -56,7 +56,7 @@ The hardest and most important piece. Every generated asset is automatically sco
 |-----------|-----------|------|
 | Video Generation | **Veo 3.1** | Reference-conditioned video synthesis |
 | Image Generation | **Nano Banana** | Virtual try-on image synthesis |
-| Vision Evaluation | **Gemini 3 Flash** | Glitch detection, garment accuracy, product consistency |
+| Vision Evaluation | **Gemini** | Glitch detection, garment accuracy, product consistency |
 | Image Enhancement | **Imagen 4 Upscale** | Reference image upscaling |
 | Face Similarity | **Face embedding model** | Deterministic face embedding comparison |
 | Rotation Detection | **Optical Flow (Lucas-Kanade)** | Deterministic spin direction classification |
