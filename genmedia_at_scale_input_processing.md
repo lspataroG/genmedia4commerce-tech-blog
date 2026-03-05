@@ -22,9 +22,6 @@ Extraction isolates the subject from its surroundings using image segmentation, 
 
 - **Edge preservation.** Raw segmentation masks tend to clip fine details — zippers, stitching, thin straps, hair. Dilating the mask by a small margin prevents this, at the cost of retaining a sliver of original background.
 - **Resolution handling.** Segmentation models have input resolution limits. For high-resolution images, the approach is to resize for segmentation, then scale the resulting mask back to original dimensions — preserving full-resolution detail.
-- **Fallback resilience.** Cloud segmentation APIs can fail. Having a local fallback model (even a lower-quality one) keeps the pipeline moving. Quality differences are caught downstream by evaluation.
-
-> **Key Principle:** Never abort a pipeline due to a preprocessing failure. Degrade gracefully and let evaluation catch quality issues downstream.
 
 ---
 
