@@ -33,7 +33,7 @@ Let reference images lead. Keep text descriptions minimal for generation — jus
 ### 3. Automated Evaluation
 > **[Part 4: Deep Dive on Evaluation](genmedia_at_scale_evaluation.md)**
 
-The hardest and most important piece. Every generated asset is automatically scored using a combination of deterministic ML models, LLM-as-judge evaluations, and reference comparisons. Assets that fail are retried or discarded — no human in the loop.
+The hardest and most important piece. Every generated asset is automatically scored using a combination of deterministic deep learning models, LLM-as-judge evaluations, and reference comparisons. Assets that fail are retried or discarded — no human in the loop.
 
 ---
 
