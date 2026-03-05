@@ -39,7 +39,7 @@ The architecture employs three categories of evaluation methods, each suited to 
 
 **Face embedding similarity** is a critical evaluation in virtual try-on. The pipeline extracts face embeddings from both the reference face and the generated image's face, then computes cosine similarity. This is rotation-invariant, lighting-invariant, and completely deterministic — the same pair of faces always produces the same score.
 
-**Optical flow classification** uses sparse Lucas-Kanade tracking to follow feature points across video frames, computing average horizontal displacement per frame. The displacement pattern is analyzed through a rule-based classifier (tuned via grid search on 876 labeled examples to 98.3% accuracy) that detects clockwise rotation, anticlockwise rotation, direction changes, and motion spikes.
+**Optical flow classification** uses sparse Lucas-Kanade tracking to follow feature points across video frames, computing average horizontal displacement per frame. The displacement pattern is analyzed through a rule-based classifier that detects clockwise rotation, anticlockwise rotation, direction changes, and motion spikes.
 
 > **Key Advantage:** Deterministic models are fast, cheap (no API call), and reproducible. The same input always produces the same evaluation. They are the foundation of the evaluation stack.
 
