@@ -25,7 +25,7 @@ The pipeline accepts multiple product images and applies the input optimization 
 - **Extraction:** Each image is segmented to isolate the product and place it on a clean, uniform background. This prevents the generation model from reproducing or reacting to studio backgrounds, gradients, or clutter.
 - **Enhancement:** Images are upscaled to provide the generation model with maximum visual detail. Higher-resolution references produce sharper, more faithful video output.
 
-For generic products, classification and selection are typically not needed — all provided images are used as references. The images are placed on standardized canvases at a consistent resolution, giving the generation model a uniform set of visual references.
+For generic products, classification and selection use pretrained models like Gemini to identify usable images, filter out unsuitable ones, and select the best references for generation.
 
 ### Pillar 2: Guided Generation
 
