@@ -134,30 +134,9 @@ The final output includes both the video and a set of sampled frames suitable fo
 
 ---
 
-## Key Differences from Generic Spinning
+## Conclusion
 
-| Aspect | Generic Pipeline | Footwear Pipeline |
-|--------|-----------------|-------------------|
-| **Classification** | Pretrained model (Gemini) | Fine-tuned viewpoint classifier |
-| **Pair handling** | Not needed | Automatic detection and splitting |
-| **Feasibility check** | Basic | 4-view coverage required |
-| **Image selection** | Basic selection | Best views in clockwise order |
-| **Spin validation** | Motion tracking (deterministic) | Frame-by-frame classification (semantic) |
-| **Product consistency** | Artifact detection (Gemini) | Multi-view ground truth comparison (Gemini) |
-| **Post-processing** | Minimal | Reorder + crop + resize |
-
----
-
-## Framework Patterns Demonstrated
-
-The footwear pipeline demonstrates how the framework scales to complex use cases by composing more techniques from the toolkit:
-
-1. **Classification as routing** — viewpoint classification drives every downstream decision
-2. **Fail-fast with feasibility checks** — insufficient inputs are caught before expensive processing
-3. **Invalid input filtering** — unusable images (cropped, worn, sole views) are discarded before expensive processing
-4. **Semantic evaluation** — domain knowledge (the rotation graph) enables stronger validation than generic approaches
-5. **Multi-view ground truth comparison** — reference-matched evaluation catches hallucinations
-6. **Layered evaluation** — each layer catches a different class of problem, and together they enable fully automated output
+The footwear pipeline illustrates a broader point about the framework: the same three pillars — input optimization, guided generation, automated evaluation — scale to arbitrarily complex product categories by composing more techniques from the toolkit. Classification becomes deeper, evaluation becomes multi-layered, and domain knowledge (like the rotation graph) unlocks validation strategies that generic approaches can't achieve. The architecture doesn't change; the techniques within it do.
 
 ---
 
