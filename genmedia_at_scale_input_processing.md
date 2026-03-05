@@ -51,7 +51,7 @@ Selection identifies the **best subset** of inputs for the generation task:
 
 ## Processing at Scale
 
-When processing thousands of products, input optimization must be parallelized. Individual images within a product are processed concurrently, and products themselves can be processed independently. The key constraint is API rate limits on cloud services (segmentation, upscaling), which require backoff and retry logic at the infrastructure level — or provisioned throughput to guarantee capacity at scale.
+When processing thousands of products, input optimization must be parallelized. Individual images within a product are processed concurrently, and products themselves can be processed independently. The key constraint is API rate limits on cloud services (segmentation, upscaling), which require backoff and retry logic at the infrastructure level — or [provisioned throughput](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/provisioned-throughput/overview) to guarantee capacity at scale.
 
 The input processing stage is also where **the most cost can be saved.** By classifying and filtering inputs early, the pipeline avoids spending expensive generation and evaluation resources on products that were never going to produce acceptable output.
 
