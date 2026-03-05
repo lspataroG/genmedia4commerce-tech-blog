@@ -46,7 +46,6 @@ Selection identifies the **best subset** of inputs for the generation task:
 
 - **Deduplication.** When multiple images cover the same viewpoint or angle, pick the one with the highest quality or completeness.
 - **Coverage optimization.** Select images that maximize viewpoint diversity — covering as many distinct angles as possible within the model's reference image budget.
-- **Standardization.** After selection, images are placed on uniform canvases at a consistent resolution and scale. This removes yet another source of variance from the generation input.
 
 ---
 
