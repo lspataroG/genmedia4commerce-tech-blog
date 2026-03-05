@@ -79,10 +79,10 @@ Gemini evaluates the video for problems that optical flow can't catch:
 
 | Detect (INVALID) | Accept (VALID) |
 |-------------------|----------------|
-| Direction reversals visible to a viewer | Minor wobbles or hesitations |
+| Hallucinated features (extra buttons, missing elements) | Minor wobbles or hesitations |
 | Text/logos appearing mirrored or duplicated | Slight lighting variations |
-| Features appearing or disappearing | Natural reflections and shadows |
-| Sudden jumps, teleportation, or discontinuities | Minor surface imperfections |
+| Product appearance changing mid-video | Natural reflections and shadows |
+| Unnatural transformations or morphing | Minor surface imperfections |
 
 The prompt calibration — distinguishing real defects from acceptable artifacts — is critical. Too strict and the pipeline wastes compute rejecting usable output. Too lenient and defective videos reach the catalog.
 
