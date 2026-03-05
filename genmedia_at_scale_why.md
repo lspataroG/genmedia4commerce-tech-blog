@@ -71,7 +71,7 @@ Input Image → API Call → Output Media
 
 This works for demos. It fails at scale for three reasons:
 
-**1. Input quality varies wildly.** Product images from retailer catalogs come in every imaginable quality level: different resolutions, backgrounds, lighting conditions, angles, and compositions. Some products have 10 high-quality studio shots; others have a single low-resolution image on a cluttered background. A model that performs well on a clean studio shot may produce artifacts when given a noisy, low-resolution input.
+**1. Input quality and metadata vary wildly.** Product images from retailer catalogs come in every imaginable quality level: different resolutions, backgrounds, lighting conditions, angles, and compositions. Some products have 10 high-quality studio shots; others have a single low-resolution image on a cluttered background. Worse, images are often unlabeled — you don't know the product category, the viewpoint, whether it's cropped, worn by a person, or showing an unusable angle (like the sole of a shoe instead of the side). A pipeline that assumes clean, labeled inputs will break on real-world catalog data.
 
 **2. No feedback loop.** A single API call has no way to verify its own output. Did the spinning video actually rotate clockwise? Did the try-on image preserve the model's face? Did the product maintain its correct proportions? Without evaluation, every output is a guess.
 
