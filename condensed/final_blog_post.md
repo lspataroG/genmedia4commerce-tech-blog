@@ -1,7 +1,5 @@
 # Beyond the Prompt: A Framework for Scaling Generative Media in Commerce
 
-*By The GenMedia Engineering Team, March 5, 2026*
-
 Generative AI models can produce stunning product media — 360-degree spins, virtual try-on images, lifestyle scenes. But the gap between a single impressive demo and reliable production across thousands of SKUs is vast. This post describes a framework for bridging that gap.
 
 ---
@@ -158,5 +156,3 @@ The specific techniques change per product category and use case. The architectu
 As generative models continue to increase in capability, the engineering scaffolding around them will determine who can deploy them safely in production environments. The three pillars provide a reusable blueprint for that scaffolding — applicable wherever generative media needs to be reliable, brand-consistent, and fully automated.
 
 ---
-
-*Check out the full documentation and reference implementations in the [GenMedia-at-Scale GitHub repository](#) to get started. We welcome your feedback as you build your own production-grade generative media pipelines.*
