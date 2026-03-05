@@ -43,7 +43,7 @@ The architecture employs three categories of evaluation methods, each suited to 
 
 > **Key Advantage:** Deterministic models are fast, cheap (no API call), and reproducible. The same input always produces the same evaluation. They are the foundation of the evaluation stack.
 
-### 2. LLM-as-Judge
+### 2. LLM-as-Judge with Gemini
 
 **What:** Large vision-language models (Gemini) that analyze generated media and produce structured quality assessments.
 
@@ -65,7 +65,7 @@ The architecture employs three categories of evaluation methods, each suited to 
 
 [DIAGRAM: A two-column layout. Left column titled "Generation Prompt" shows a minimal text: "A blue running shoe standing still in a white studio void" with a small icon. Right column titled "Evaluation Prompt" shows a much longer, detailed text (use a text block with visible but unreadable small text to convey density, with a few legible highlighted phrases like "crosshatch pattern on heel counter", "three ventilation holes on medial side", "reflective heel tab with embossed logo"). Below both columns, a generated shoe video frame is shown. An arrow from the left column points to the video frame labeled "Creates". An arrow from the right column points to the video frame labeled "Judges". The visual contrast in text density between the two columns should be dramatic.]
 
-### 3. Reference Comparison
+### 3. Ground Truth Comparison with Gemini
 
 **What:** Direct comparison between generated output and reference inputs, using either pixel-level metrics or multi-view LLM evaluation.
 
