@@ -38,16 +38,17 @@ These aren't edge cases. With current-generation models, fidelity issues appear 
 
 > **Key Insight:** Fidelity problems are fundamentally about the model filling in details from its training distribution rather than faithfully reproducing the reference. The architecture must minimize opportunities for the model to improvise.
 
-### Challenge 2: Consistency
+### Challenge 2: Brand Integrity and Product Consistency
 
-A single product might need media generated across multiple formats: a spinning video, several try-on images with different models, background variations for different marketing channels. The product must look identical across all of them.
+Retailers invest heavily in brand identity — specific colors, materials, hardware, logos, and design details that define their products. Generated media must preserve these details faithfully. A logo that's slightly wrong, a signature color that drifts, or a hardware detail that disappears doesn't just look bad — it misrepresents the product and erodes brand trust.
 
-**Consistency breaks down in two ways:**
+**Where consistency breaks down:**
 
-- **Within a generation:** A spinning video must show the same product through 360 degrees of rotation. If the model hallucinates a detail at one angle, it creates a discontinuity — the product appears to change as it rotates.
-- **Across generations:** Two try-on images of the same jacket on different models must show the same jacket. Color drift, pattern changes, or structural differences between generations undermine customer trust.
+- **Structural details:** A jacket with three buttons rendered with two. A shoe's distinctive heel counter pattern replaced with something generic. Hardware (zippers, buckles, clasps) that changes shape or position.
+- **Color and material accuracy:** A navy blue product that shifts toward black. A matte leather finish that becomes glossy. Pattern details (plaid, crosshatch, mesh) that simplify or morph.
+- **Logos and branding:** Text that becomes illegible, mirrored, or repositioned. Brand-specific design elements that the model "smooths out" or replaces with generic alternatives.
 
-Generative models are stochastic. Two calls with identical inputs produce different outputs. Managing this variance — keeping it within acceptable bounds — requires explicit architectural controls.
+Generative models are stochastic — they fill gaps from their training distribution, not from the product's specification sheet. Without explicit controls, every generation is an opportunity for brand-damaging drift.
 
 ### Challenge 3: Reliability
 
