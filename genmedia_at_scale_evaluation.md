@@ -57,25 +57,11 @@ The framework employs three categories of evaluation methods, each suited to dif
 
 **Product accuracy scoring** evaluates how faithfully a reference product is reproduced in the generated output. The scoring scale should be designed around **critical decision boundaries** — distinguishing between "completely wrong" (automatic discard), "present but imperfect" (usable with lower score), and "accurate reproduction" (high score).
 
+**Multi-view ground truth comparison** is particularly powerful for consistency validation. Rather than checking individual outputs in isolation, it sends all reference images and matched generated outputs to Gemini in a single call, asking it to evaluate consistency across the entire set. This catches problems that single-view evaluation misses — like a product that looks correct from one angle but wrong from another.
+
 > **Key Principle: Descriptions serve evaluation, not generation.** This is where rich, detailed product descriptions become valuable. While generation prompts should be minimal to avoid conflicts with reference images, evaluation prompts benefit from exhaustive descriptions. "Check whether the distinctive crosshatch pattern is present on the heel counter" requires knowing about the crosshatch pattern — and that knowledge comes from a detailed product description, not from the generation prompt.
 
 [DIAGRAM: A two-column layout. Left column titled "Generation Prompt" shows a minimal text: "A blue running shoe standing still in a white studio void" with a small icon. Right column titled "Evaluation Prompt" shows a much longer, detailed text (use a text block with visible but unreadable small text to convey density, with a few legible highlighted phrases like "crosshatch pattern on heel counter", "three ventilation holes on medial side", "reflective heel tab with embossed logo"). Below both columns, a generated shoe video frame is shown. An arrow from the left column points to the video frame labeled "Creates". An arrow from the right column points to the video frame labeled "Judges". The visual contrast in text density between the two columns should be dramatic.]
-
-### 3. Ground Truth Comparison with Gemini
-
-**What:** Direct comparison between generated output and reference inputs, using either pixel-level metrics or multi-view LLM evaluation.
-
-**When to use:** When the question is "does the output match the input?" rather than "is the output good?"
-
-**Applicable methods:**
-
-| Method | Approach | What It Measures |
-|--------|----------|------------------|
-| Structural similarity | SSIM between reference image and closest generated frame | How closely a generated output matches the reference |
-| Multi-view LLM comparison | Gemini evaluates generated output against multiple reference images simultaneously | Whether the product maintains consistent structure, color, and features across views |
-| Embedding similarity | Cosine distance between embeddings (face, product) | Whether identity or product characteristics are preserved |
-
-**Multi-view comparison** is particularly powerful for consistency validation. Rather than checking individual outputs in isolation, it sends all reference images and matched generated outputs to Gemini in a single call, asking it to evaluate consistency across the entire set. This catches problems that single-view evaluation misses — like a product that looks correct from one angle but wrong from another.
 
 ---
 
