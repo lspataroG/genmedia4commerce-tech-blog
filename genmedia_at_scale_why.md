@@ -26,27 +26,29 @@ Calling a generative model API is easy. Getting it to produce consistently corre
 
 ### Challenge 1: Fidelity
 
-Generative models are creative by nature. That creativity becomes a liability when the goal is accurate product reproduction.
+Generative models are creative by nature. That creativity becomes a liability when the goal is accurate product reproduction. Models hallucinate — they add, remove, or transform details that should be faithfully preserved.
 
 **The problem manifests differently per use case:**
 
-- **Product spinning:** A video of a phone might render the screen on both sides, or mirror text/logos during rotation. A backpack might grow an extra pocket that doesn't exist on the real product.
-- **Virtual try-on:** A jacket with three buttons might be rendered with two. A distinctive plaid pattern might become generic stripes. The model's face might change subtly — same person, but different enough to feel uncanny.
-- **Background transformation:** A product placed in a lifestyle scene might change proportions, or the model might "improve" the product by adding features.
+- **Product spinning:** A video of a phone might render the screen on both sides, or a backpack might grow an extra pocket that doesn't exist on the real product. Features appear and disappear as the product rotates.
+- **Virtual try-on:** The model's face might change subtly — same person, but different enough to feel uncanny. Garments might be missing entirely, replaced by the original clothing.
+- **Background transformation:** A product placed in a lifestyle scene might change proportions, or the model might "improve" the product by adding features that don't exist.
 
-These aren't edge cases. With current-generation models, fidelity issues appear in a meaningful percentage of generations. At scale, "meaningful percentage" translates to thousands of unusable assets.
+These aren't edge cases. With current-generation models, fidelity issues appear in a meaningful percentage of generations. At scale, that translates to thousands of unusable assets.
 
 > **Key Insight:** Fidelity problems are fundamentally about the model filling in details from its training distribution rather than faithfully reproducing the reference. The architecture must minimize opportunities for the model to improvise.
 
 ### Challenge 2: Brand Integrity and Product Consistency
 
-Retailers invest heavily in brand identity — specific colors, materials, hardware, logos, and design details that define their products. Generated media must preserve these details faithfully. A logo that's slightly wrong, a signature color that drifts, or a hardware detail that disappears doesn't just look bad — it misrepresents the product and erodes brand trust.
+Even when the model doesn't hallucinate outright, it can subtly drift from the product's actual appearance in ways that damage brand trust.
 
-**Where consistency breaks down:**
+Retailers invest heavily in brand identity — specific colors, materials, hardware, logos, and design details that define their products. Generated media must preserve these details faithfully.
 
-- **Structural details:** A jacket with three buttons rendered with two. A shoe's distinctive heel counter pattern replaced with something generic. Hardware (zippers, buckles, clasps) that changes shape or position.
-- **Color and material accuracy:** A navy blue product that shifts toward black. A matte leather finish that becomes glossy. Pattern details (plaid, crosshatch, mesh) that simplify or morph.
+**Where brand integrity breaks down:**
+
+- **Color and material drift:** A navy blue product that shifts toward black. A matte leather finish that becomes glossy. Subtle but brand-damaging differences that accumulate across a catalog.
 - **Logos and branding:** Text that becomes illegible, mirrored, or repositioned. Brand-specific design elements that the model "smooths out" or replaces with generic alternatives.
+- **Design detail simplification:** A distinctive crosshatch pattern on a heel counter replaced with something generic. Hardware (zippers, buckles, clasps) that loses its specific shape. The model defaults to "average" rather than preserving what makes the product unique.
 
 Generative models are stochastic — they fill gaps from their training distribution, not from the product's specification sheet. Without explicit controls, every generation is an opportunity for brand-damaging drift.
 
