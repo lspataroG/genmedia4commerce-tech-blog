@@ -57,7 +57,7 @@ The architecture employs three categories of evaluation methods, each suited to 
 | Garment accuracy | Gemini | Whether each reference garment is faithfully reproduced in a try-on image | Score on a defined scale (e.g., 0–100) |
 | Product consistency | Gemini | Whether a generated video matches the reference product across multiple viewpoints | `{is_valid: bool, explanation: str}` |
 
-**Glitch detection** sends a video to Gemini at reduced frame rate (2fps) and asks it to identify specific categories of visual problems: sustained direction reversals, text/logo mirroring, features appearing or disappearing, sudden jumps or teleportation. The prompt is carefully calibrated to distinguish between actual glitches and acceptable artifacts (minor wobbles, slight lighting variations, natural reflections).
+**Glitch detection** sends a video to Gemini at a reduced frame rate and asks it to identify specific categories of visual problems: sustained direction reversals, text/logo mirroring, features appearing or disappearing, sudden jumps or teleportation. The prompt is carefully calibrated to distinguish between actual glitches and acceptable artifacts (minor wobbles, slight lighting variations, natural reflections).
 
 **Garment accuracy** evaluates each reference garment individually against the generated try-on image. The scoring scale is designed around a critical decision boundary: score 0 (garment completely missing) triggers automatic discard, while scores 1–3 represent varying degrees of reproduction quality that are all usable.
 
