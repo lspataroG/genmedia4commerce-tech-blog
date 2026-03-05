@@ -73,7 +73,7 @@ The first check uses **motion tracking** to determine whether the video shows th
 
 ### Level 2: Visual Artifact Detection (Gemini)
 
-Videos that pass the rotation check proceed to **semantic artifact detection** using Gemini as a vision evaluator. The video is sent at a reduced frame rate.
+Videos that pass the rotation check proceed to **semantic artifact detection** using Gemini as a vision evaluator.
 
 Gemini evaluates the video for problems that optical flow can't catch:
 
