@@ -54,13 +54,13 @@ The hardest and most important piece. Every generated asset is automatically sco
 
 | Component | Technology | Role |
 |-----------|-----------|------|
-| Video Generation | **Veo 3.1** | Reference-conditioned video synthesis |
-| Image Generation | **Nano Banana** | Virtual try-on image synthesis |
-| Vision Evaluation | **Gemini** | Glitch detection, garment accuracy, product consistency |
-| Image Enhancement | **Imagen 4 Upscale** | Reference image upscaling |
+| Video Generation | **[Veo 3](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/veo/3-0-generate)** | Reference-conditioned video synthesis |
+| Image Generation | **[Nano Banana](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/3-1-flash-image)** | Virtual try-on image synthesis |
+| Vision Evaluation | **[Gemini](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/start/get-started-with-gemini-3)** | Glitch detection, garment accuracy, product consistency |
+| Image Enhancement | **[Imagen 4 Upscale](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/imagen/4-0-upscale)** | Reference image upscaling |
 | Face Similarity | **Face embedding model** | Deterministic face embedding comparison |
 | Rotation Detection | **Optical Flow (Lucas-Kanade)** | Deterministic spin direction classification |
-| Segmentation | **Vertex AI Image Segmentation** | Background removal and object extraction |
+| Segmentation | **[Vertex AI Image Segmentation](https://colab.sandbox.google.com/github/GoogleCloudPlatform/generative-ai/blob/main/vision/getting-started/image_segmentation.ipynb)** | Background removal and object extraction |
 
 ---
 

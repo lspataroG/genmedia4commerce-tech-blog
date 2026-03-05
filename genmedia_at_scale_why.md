@@ -14,7 +14,7 @@ E-commerce is a visual-first medium. The quality and richness of product media d
 
 **Operational efficiency.** Traditional product media production — studio shoots, model bookings, post-production editing — costs anywhere from $50 to $500+ per SKU. For a retailer with 100,000 SKUs, generating 360-degree spins and try-on images through manual production is simply not feasible. The cost and logistics make it a subset-only activity: "We can only afford to shoot on-site for a fraction of the catalog."
 
-Generative AI should solve this. Models like Veo, Gemini, and Imagen can produce photorealistic media from product photographs. But the gap between a single impressive demo and reliable production at catalog scale is vast.
+Generative AI should solve this. Models like [Veo](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/veo/3-0-generate), [Gemini](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/start/get-started-with-gemini-3), and [Imagen](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/imagen/4-0-upscale) can produce photorealistic media from product photographs. But the gap between a single impressive demo and reliable production at catalog scale is vast.
 
 *\*Source: Shopify 2025*
 
