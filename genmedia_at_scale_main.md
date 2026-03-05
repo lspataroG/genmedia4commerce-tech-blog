@@ -1,4 +1,4 @@
-# GenMedia at Scale: Production-Grade Generative Media for Commerce
+# Beyond the Prompt: A Framework for Scaling GenMedia in Commerce
 
 ## TL;DR
 
