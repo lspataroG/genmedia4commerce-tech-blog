@@ -16,7 +16,7 @@ E-commerce is a visual-first medium. The quality and richness of product media d
 
 Generative AI should solve this. Models like Veo, Gemini, and Imagen can produce photorealistic media from product photographs. But the gap between a single impressive demo and reliable production at catalog scale is vast.
 
-*Source: Shopify 2025*
+*\*Source: Shopify 2025*
 
 ---
 

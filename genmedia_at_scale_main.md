@@ -73,7 +73,7 @@ The hardest and most important piece. Every generated asset is automatically sco
 | **Cost** | Media generation costs reduced to a fraction of manual production |
 | **Scale** | Fully automated pipelines across entire catalogs — no human review required |
 
-*Source: Shopify 2025*
+*\*Source: Shopify 2025*
 
 ---
 
