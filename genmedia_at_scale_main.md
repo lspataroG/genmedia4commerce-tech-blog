@@ -2,7 +2,7 @@
 
 ## TL;DR
 
-Generative AI models can produce stunning media — but getting them to work reliably at catalog scale is a different challenge entirely. This technical pattern describes the architecture and methodology for building **production-grade generative media pipelines** — the kind that produce 360-degree product spins, virtual try-on experiences, and contextualized product imagery across entire e-commerce catalogs without human review.
+Generative AI models can produce stunning media — but getting them to work reliably at catalog scale is a different challenge entirely. This technical pattern describes the architecture and methodology for building **production-grade generative media pipelines** — the kind that produce 360-degree product spins, virtual try-on experiences, and contextualized product imagery across entire e-commerce catalogs with minimal human review.
 
 The core insight: **the generation call is the easy part.** The hard part is everything around it — preparing inputs so models succeed on the first try, and automatically evaluating outputs so no human needs to review them.
 
