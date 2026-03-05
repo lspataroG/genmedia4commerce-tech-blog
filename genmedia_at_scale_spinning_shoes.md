@@ -1,6 +1,6 @@
-# Part 6: Case Study — Footwear Spinning
+# Part 5: Case Study — Footwear Spinning
 
-> **[Back to Overview](genmedia_at_scale_main.md)** | **Previous: [Part 5 — Case Study: Product 360 Spinning](genmedia_at_scale_spinning.md)**
+> **[Back to Overview](genmedia_at_scale_main.md)** | **Previous: [Part 4 — Case Study: Product 360 Spinning](genmedia_at_scale_spinning.md)**
 
 ---
 

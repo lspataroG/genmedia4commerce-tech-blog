@@ -88,7 +88,7 @@ flowchart TD
 
 Evaluation is the pillar that makes the framework production-grade. Without it, every output is a gamble. With it, the pipeline can achieve quality levels that approach or exceed human review.
 
-The evaluation system is covered in depth in **[Part 4: Deep Dive on Evaluation](genmedia_at_scale_evaluation.md)**. Here, we outline the architectural role it plays.
+The evaluation system is covered in depth in **[Part 3: Deep Dive on Evaluation](genmedia_at_scale_evaluation.md)**. Here, we outline the architectural role it plays.
 
 ### The Generate-Evaluate Loop
 
@@ -157,6 +157,6 @@ flowchart TD
     classDef optional stroke-dasharray: 5 5
 ```
 
-What changes across use cases is the specific composition of techniques within each pillar — which is exactly what the case studies in Parts 5 and 6 demonstrate.
+What changes across use cases is the specific composition of techniques within each pillar — which is exactly what the case studies in Parts 4 and 5 demonstrate.
 
-> **Next: [Part 3 — Deep Dive: Input Processing](genmedia_at_scale_input_processing.md)**
+> **Next: [Part 3 — Deep Dive: Evaluation](genmedia_at_scale_evaluation.md)**

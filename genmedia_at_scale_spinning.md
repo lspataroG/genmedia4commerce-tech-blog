@@ -1,6 +1,6 @@
-# Part 5: Case Study — Product 360 Spinning
+# Part 4: Case Study — Product 360 Spinning
 
-> **[Back to Overview](genmedia_at_scale_main.md)** | **Previous: [Part 4 — Deep Dive: Evaluation](genmedia_at_scale_evaluation.md)**
+> **[Back to Overview](genmedia_at_scale_main.md)** | **Previous: [Part 3 — Deep Dive: Evaluation](genmedia_at_scale_evaluation.md)**
 
 ---
 
@@ -12,7 +12,7 @@ Traditionally, creating a 360 spin requires a motorized turntable, controlled li
 
 The generative approach: take a small number of static product photographs and generate a smooth, continuous 360-degree spinning video using a video generation model (Veo) with reference-image conditioning. No turntable, no studio, no post-production.
 
-This section walks through how the three-pillar framework applies to generic product spinning (mugs, backpacks, electronics, watches, etc.). The specialized footwear pipeline is covered in **[Part 6](genmedia_at_scale_spinning_shoes.md)**.
+This section walks through how the three-pillar framework applies to generic product spinning (mugs, backpacks, electronics, watches, etc.). The specialized footwear pipeline is covered in **[Part 5](genmedia_at_scale_spinning_shoes.md)**.
 
 ---
 
@@ -110,4 +110,4 @@ The generic spinning pipeline demonstrates the framework at its simplest: clean 
 
 ---
 
-> **Next: [Part 6 — Case Study: Footwear Spinning](genmedia_at_scale_spinning_shoes.md)**
+> **Next: [Part 5 — Case Study: Footwear Spinning](genmedia_at_scale_spinning_shoes.md)**

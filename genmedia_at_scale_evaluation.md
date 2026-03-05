@@ -1,6 +1,6 @@
-# Part 4: Deep Dive — Evaluation
+# Part 3: Deep Dive — Evaluation
 
-> **[Back to Overview](genmedia_at_scale_main.md)** | **Previous: [Part 3 — Deep Dive: Input Processing](genmedia_at_scale_input_processing.md)**
+> **[Back to Overview](genmedia_at_scale_main.md)** | **Previous: [Part 2 — The Architecture Framework](genmedia_at_scale_architecture.md)**
 
 ---
 
@@ -205,4 +205,4 @@ The distinction is critical. Being too strict produces excessive false rejection
 
 ---
 
-> **Next: [Part 5 — Case Study: Product 360 Spinning](genmedia_at_scale_spinning.md)**
+> **Next: [Part 4 — Case Study: Product 360 Spinning](genmedia_at_scale_spinning.md)**
