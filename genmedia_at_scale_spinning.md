@@ -69,7 +69,7 @@ The key architectural pattern in this pipeline is layered evaluation: a cheap de
 
 The first check uses **motion tracking** to determine whether the video shows the expected rotation direction. It tracks visual features across consecutive frames, measures how they move horizontally, and classifies the overall motion as clockwise, anticlockwise, or invalid. This is a pure computer vision approach — no API calls, no cost, sub-second execution.
 
-> **Why not use an LLM for this?** Rotation direction is an objective, measurable property. A deterministic algorithm is faster, cheaper, and more reproducible than a vision-language model for this task. LLMs should be reserved for semantic judgments that require understanding, not for measurements that can be computed directly.
+> **Why not use an LLM for this?** Rotation direction is an objective, measurable property. A deterministic algorithm is faster, cheaper, and more reproducible. Beyond cost, LLMs are often not well suited for reasoning across frames about precise spatial properties like position, direction, or specific movements — they excel at semantic understanding, not pixel-level measurement.
 
 ### Level 2: Visual Artifact Detection (Gemini)
 
