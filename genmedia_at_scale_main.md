@@ -12,7 +12,7 @@ The core insight: **the generation call is the easy part.** The hard part is eve
 
 Retailers need rich product media — videos, contextual images, try-on experiences — across catalogs of thousands or millions of SKUs. Manual production doesn't scale. Generative AI should be the answer, but raw model outputs are unpredictable: a spinning video might reverse direction mid-spin, a try-on image might change the model's face, a product rendering might hallucinate extra buttons on a jacket.
 
-At scale, even a 5% failure rate means thousands of unusable assets and expensive human review. The business case demands near-zero defect rates with fully automated pipelines.
+At scale, raw model outputs require human review to catch failures — and when you're generating media across thousands of SKUs, that review becomes a bottleneck that defeats the purpose of automation. The business case demands fully automated pipelines that can detect, retry, and resolve quality issues without human intervention.
 
 ---
 
