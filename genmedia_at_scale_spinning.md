@@ -88,8 +88,7 @@ The prompt calibration — distinguishing real defects from acceptable artifacts
 
 ### The Retry Loop
 
-If either validation level fails, the video is regenerated within a bounded retry budget. The checks are sequenced so the free check runs first — a video with wrong rotation direction is rejected instantly without spending on a Gemini call.
-
+If either validation level fails, the video is regenerated within a bounded retry budget.
 If the retry budget is exhausted, the pipeline can either use the best available result (best-effort) or skip the product entirely (strict), depending on quality requirements.
 
 [DIAGRAM: A vertical flow diagram showing the spinning pipeline. Top: "Product Images" → "Input Optimization" box (Extract + Enhance) → "Guided Generation" box (Reference Images + Minimal Prompt → Veo) → "Level 1: Rotation Check" diamond (deterministic, free) → Pass goes to "Level 2: Artifact Detection" diamond (Gemini, paid) → Pass goes to "Accept Video" (green). Both Fail paths loop back to "Guided Generation" with a retry counter. On the side, annotate Level 1 as "Cost: Free, Speed: <1s" and Level 2 as "Cost: Low, Speed: ~5s". The regeneration arrow should be labeled "Cost: High, Speed: ~60-90s" to show why cheap checks first matters.]
