@@ -53,7 +53,7 @@ The architecture employs three categories of evaluation methods, each suited to 
 
 | Method | Model | What It Measures | Output |
 |--------|-------|------------------|--------|
-| Glitch detection | Gemini | Visual artifacts in spinning videos (direction reversals, teleportation, unnatural transformations) | `{is_valid: bool, explanation: str}` |
+| Glitch detection | Gemini | Visual artifacts in generated videos (direction reversals, teleportation, unnatural transformations, discontinuities) | `{is_valid: bool, explanation: str}` |
 | Garment accuracy | Gemini | Whether each reference garment is faithfully reproduced in a try-on image | Score on a defined scale (e.g., 0–100) |
 | Product consistency | Gemini | Whether a generated video matches the reference product across multiple viewpoints | `{is_valid: bool, explanation: str}` |
 
