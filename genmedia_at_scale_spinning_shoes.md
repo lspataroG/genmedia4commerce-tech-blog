@@ -36,7 +36,24 @@ Unlike generic products, footwear requires **deep classification** before any pr
 
 ### Guided Generation
 
-Same principle as generic spinning: reference images lead, descriptions are minimal. The prompt structure is identical — subject, action, scene — with only the subject description adapted for footwear (e.g., "a blue running shoe" instead of "a red ceramic mug").
+Same principle as generic spinning: reference images lead, descriptions are minimal. The prompt structure is identical — subject, action, scene — with only the subject description adapted for footwear.
+
+**Example Veo prompt:**
+
+```
+[Subject]: A blue running shoe standing still in a completely white studio void
+(Hex: #FFFFFF, RGB: 255, 255, 255).
+
+[Action]: The camera performs one continuous, seamless, very fast 360-degree orbit
+around the stationary product. The camera movement is perfectly smooth and steady,
+maintaining a constant distance and speed throughout the entire clip. The product
+does not move or rotate; only the camera moves.
+
+[Scene]: A completely white studio void (Hex: #FFFFFF, RGB: 255, 255, 255).
+The only visible element is the product, nothing else.
+```
+
+The prompt says nothing about the shoe's materials, stitching, or branding — all of that comes from the reference images.
 
 ### Automated Evaluation: Multi-Layer
 
