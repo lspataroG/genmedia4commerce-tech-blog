@@ -33,11 +33,11 @@ The architecture employs three categories of evaluation methods, each suited to 
 
 | Method | Model | What It Measures | Output |
 |--------|-------|------------------|--------|
-| Face similarity | InsightFace ArcFace (`buffalo_l`) | Whether a generated face matches the reference person | Cosine similarity (0–100%) |
+| Face embedding similarity | Face embedding model | Whether a generated face matches the reference person | Cosine similarity (0–100%) |
 | Rotation direction | Optical flow (Lucas-Kanade) | Whether a video rotates clockwise, anticlockwise, or erratically | Classification + confidence |
 | Frame similarity | SSIM (Structural Similarity Index) | Pixel-level similarity between two frames or images | Similarity score (0–1) |
 
-**Face similarity** is a critical evaluation in virtual try-on. The pipeline extracts 512-dimensional face embeddings from both the reference face and the generated image's face using ArcFace, then computes cosine similarity. This is rotation-invariant, lighting-invariant, and completely deterministic — the same pair of faces always produces the same score.
+**Face embedding similarity** is a critical evaluation in virtual try-on. The pipeline extracts face embeddings from both the reference face and the generated image's face, then computes cosine similarity. This is rotation-invariant, lighting-invariant, and completely deterministic — the same pair of faces always produces the same score.
 
 **Optical flow classification** uses sparse Lucas-Kanade tracking to follow feature points across video frames, computing average horizontal displacement per frame. The displacement pattern is analyzed through a rule-based classifier (tuned via grid search on 876 labeled examples to 98.3% accuracy) that detects clockwise rotation, anticlockwise rotation, direction changes, and motion spikes.
 
@@ -181,7 +181,7 @@ Every retry costs money — API credits, compute time, and latency. The architec
 | Video generation (Veo 3.1) | High |
 | Image generation (Gemini) | Medium |
 | LLM evaluation (Gemini Flash) | Low |
-| Deterministic evaluation (InsightFace, optical flow) | Negligible |
+| Deterministic evaluation (embeddings, optical flow) | Negligible |
 
 This cost hierarchy influences evaluation sequencing. Cheap evaluations run first to catch obvious failures before expensive regeneration. A spinning video that fails the free optical flow check is rejected without spending on a Gemini glitch detection call.
 

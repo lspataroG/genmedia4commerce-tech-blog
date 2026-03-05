@@ -58,7 +58,7 @@ The hardest and most important piece. Every generated asset is automatically sco
 | Image Generation | **Nano Banana** | Virtual try-on image synthesis |
 | Vision Evaluation | **Gemini 3 Flash** | Glitch detection, garment accuracy, product consistency |
 | Image Enhancement | **Imagen 4 Upscale** | Reference image upscaling |
-| Face Similarity | **InsightFace ArcFace** | Deterministic face embedding comparison |
+| Face Similarity | **Face embedding model** | Deterministic face embedding comparison |
 | Rotation Detection | **Optical Flow (Lucas-Kanade)** | Deterministic spin direction classification |
 | Segmentation | **Vertex AI Image Segmentation** | Background removal and object extraction |
 
