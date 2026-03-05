@@ -93,6 +93,10 @@ This strategy trades compute cost for quality — generating N variations costs 
 
 Rather than discarding a partially-correct result and regenerating entirely, the pipeline detects the specific deficiency and triggers a correction pass. This is more efficient than blind retry because it builds on what was already correct and gives the model specific feedback about what went wrong.
 
+### Combining Strategies
+
+These strategies are not mutually exclusive — they can be composed. For example, a pipeline might generate N variations in parallel (Strategy 2), apply a targeted correction pass to each variation (Strategy 3), and then score-and-rank the results. Or a pass/fail retry loop (Strategy 1) might include a self-correction step before deciding to discard and regenerate from scratch. The right combination depends on the use case, the cost profile, and which quality dimensions are most likely to fail.
+
 [DIAGRAM: Three horizontal lanes showing the three evaluation strategies. Lane 1 "Pass/Fail with Retry": a linear flow of Generate → Evaluate → diamond decision (Pass/Fail) → Fail loops back to Generate (labeled "retry 1, 2, ... N"), Pass goes to Accept. Lane 2 "Score-and-Rank": three parallel Generate→Evaluate flows producing scores, converging into a "Rank & Select" step that outputs the best. Lane 3 "Multi-Step Self-Correction": Generate → Evaluate → "Targeted Correction" → Re-Evaluate → diamond "Compare Scores" → Pick Better. Each lane should be color-coded differently.]
 
 ---
